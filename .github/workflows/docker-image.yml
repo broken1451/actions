@@ -19,10 +19,10 @@ jobs:
         fetch-depth: 0
     
     - name: Git Semantic Version
-      uses: PaulHatch/semantic-version@v4.0.3
+      uses: PaulHatch/semantic-version@v5.0.3
       with:
-        major_pattern: "major:"
-        minor_pattern: "feat:"
+        major_pattern: "MAJOR"
+        minor_pattern: "MINOR"
         format: "${major}.${minor}.${patch}-prerelease${increment}"
       id: version
     
