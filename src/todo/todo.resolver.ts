@@ -13,7 +13,7 @@ export class TodoResolver {
     ){}
 
 
-    @Query( () => [Todo], { name: 'todos' })
+    @Query( () => [Todo], { name: 'todossssssssssss' })
     findAll(
         @Args() statusArgs: StatusArgs
     ): Todo[] {
