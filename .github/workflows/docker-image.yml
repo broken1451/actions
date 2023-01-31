@@ -33,7 +33,6 @@ jobs:
         DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
       run: |
         docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
-        echo "new_version ======>> $NEW_VERSION"
 
     - name: Build Docker Image
       env:
@@ -41,6 +40,7 @@ jobs:
       run: |
         docker build -t klerith/docker-graphql:$NEW_VERSION .
         docker build -t klerith/docker-graphql:latest .
+        echo "new_version ======>> $NEW_VERSION"
         
     - name: Push Docker Image
       env:
@@ -48,4 +48,5 @@ jobs:
       run: |
         docker push klerith/docker-graphql:$NEW_VERSION
         docker push klerith/docker-graphql:latest
+        echo "new_version ======>> $NEW_VERSION"
         
