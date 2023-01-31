@@ -33,5 +33,5 @@ jobs:
         NEW_VERSION: ${{steps.version.outputs.version}}
       run: |
         docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
-        echo "NEW_VERSION ------>>>>>>? $NEW_VERSION
+        echo "NEW_VERSION ------>>>>>> $NEW_VERSION
         
