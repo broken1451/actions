@@ -1,9 +1,9 @@
 {
   "name": "todo112",
   "version": "1.1.1-rc-12",
-  "description": "",
-  "author": "Adrian jose bravo  11",
-  "private": true,
+  "description": "test",
+  "author": "Adrian jose bravo  121",
+  "private": false,
   "license": "UNLICENSED",
   "scripts": {
     "prebuild": "rimraf dist",
