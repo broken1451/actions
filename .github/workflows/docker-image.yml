@@ -21,18 +21,31 @@ jobs:
     - name: Git Semantic Version
       uses: PaulHatch/semantic-version@v4.0.3
       with:
-        major_pattern: "major:"
-        minor_pattern: "feat:"
+        major_pattern: "major:" # si en el commit existe major: pondra 1.0.0-prerelease${increment}
+        minor_pattern: "feat:" # si en el commit existe feat: pondra 1.1.0-prerelease${increment}
         format: "${major}.${minor}.${patch}-prerelease${increment}"
-        bump_each_commit: true
+        bump_each_commit: true # If this is set to true, *every* commit will be treated as a new version.
       id: version
 
     - name: Docker Login
       env:
         DOCKER_USER: ${{secrets.DOCKER_USER}}
         DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
-        NEW_VERSION: ${{steps.version.outputs.version}}
       run: |
         docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
         echo "new_version ======>> $NEW_VERSION"
+
+    - name: Build Docker Image
+      env:
+        NEW_VERSION: ${{steps.version.outputs.version}}
+      run: |
+        docker build -t klerith/docker-graphql:$NEW_VERSION .
+        docker build -t klerith/docker-graphql:latest .
+        
+    - name: Push Docker Image
+      env:
+        NEW_VERSION: ${{steps.version.outputs.version}}
+      run: |
+        docker push klerith/docker-graphql:$NEW_VERSION
+        docker push klerith/docker-graphql:latest
         
