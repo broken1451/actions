@@ -38,15 +38,15 @@ jobs:
       env:
         NEW_VERSION: ${{steps.version.outputs.version}}
       run: |
-        docker build -t klerith/docker-graphql:$NEW_VERSION .
-        docker build -t klerith/docker-graphql:latest .
+        docker build -t broken1451/graphql:$NEW_VERSION .
+        docker build -t broken1451/graphql:latest .
         echo "new_version ======>> $NEW_VERSION"
         
     - name: Push Docker Image
       env:
         NEW_VERSION: ${{steps.version.outputs.version}}
       run: |
-        docker push klerith/docker-graphql:$NEW_VERSION
-        docker push klerith/docker-graphql:latest
+        docker push broken1451/graphql:$NEW_VERSION
+        docker push broken1451/graphql:latest
         echo "new_version ======>> $NEW_VERSION"
         
