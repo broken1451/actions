@@ -23,7 +23,7 @@ jobs:
       with:
         major_pattern: "major:" # si en el commit existe major: pondra 1.0.0-prerelease${increment}
         minor_pattern: "feat:" # si en el commit existe feat: pondra 1.1.0-prerelease${increment}
-        format: "${major}.${minor}.${patch}-prerelease${increment}"
+        format: "${major}.${minor}.${patch}"
         bump_each_commit: true # If this is set to true, *every* commit will be treated as a new version.
       id: version
 
